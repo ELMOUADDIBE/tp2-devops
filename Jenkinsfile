@@ -47,7 +47,7 @@ pipeline {
                     // Arrêter et supprimer le conteneur existant s'il existe
                     bat """
                     docker rm -f devops-webapp || echo "Le conteneur n'existe pas, poursuite du déploiement..."
-                    docker run -d ${registry}:${BUILD_NUMBER}
+                    docker run -d --name devops-webapp ${registry}:${BUILD_NUMBER}
                     """
                 }
             }
