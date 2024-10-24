@@ -1,12 +1,17 @@
-version: 0.0.1
+version: 0.1
+component: build
+shell: bash
+env:
+  variables:
+    AUTH_TOKEN: '{{ secrets.AUTH_TOKEN }}'
 steps:
-  - name: Build Docker Image
-    shell: bash
-    commands:
-      - docker build -t myapp:latest .
-  - name: Push Docker Image to OCR
-    shell: bash
-    commands:
-      - echo ${{SECRET.AUTH_TOKEN}} | docker login -u 'axwspk2pkmor/zaid.elmouaddibe-etu@etu.univh2c.ma' --password-stdin mad.ocir.io
-      - docker tag myapp:latest mad.ocir.io/axwspk2pkmor/repo:latest
-      - docker push mad.ocir.io/axwspk2pkmor/repo:latest
+  - type: Command
+    name: Build Docker Image
+    command: |
+      docker build -t myapp:latest .
+  - type: Command
+    name: Push Docker Image to OCR
+    command: |
+      echo $AUTH_TOKEN | docker login -u 'axwspk2pkmor/zaid.elmouaddibe-etu@etu.univh2c.ma' --password-stdin mad.ocir.io
+      docker tag myapp:latest mad.ocir.io/axwspk2pkmor/repo:latest
+      docker push mad.ocir.io/axwspk2pkmor/repo:latest
