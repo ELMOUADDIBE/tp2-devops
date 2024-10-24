@@ -12,6 +12,5 @@ steps:
   - type: Command
     name: Push Docker Image to OCR
     command: |
-      echo $AUTH_TOKEN | docker login -u 'axwspk2pkmor/zaid.elmouaddibe-etu@etu.univh2c.ma' --password-stdin mad.ocir.io
       docker tag myapp:latest mad.ocir.io/axwspk2pkmor/repo:latest
       docker push mad.ocir.io/axwspk2pkmor/repo:latest
