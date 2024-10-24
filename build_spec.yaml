@@ -1,26 +1,14 @@
 version: 0.1
 component: build
 shell: bash
-env:
-  vaultVariables:
-    AUTH_TOKEN: 'U9v.xMrc[BBT{yANqQ8m'
 steps:
   - type: Command
     name: Build Docker Image
     command: |
       docker build -t myapp:latest .
   - type: Command
-    name: Verify AUTH_TOKEN
-    command: |
-      if [ -z "$AUTH_TOKEN" ]; then
-        echo "AUTH_TOKEN is not set"
-        exit 1
-      else
-        echo "AUTH_TOKEN is set"
-      fi
-  - type: Command
     name: Push Docker Image to OCR
     command: |
-      echo $AUTH_TOKEN | docker login -u 'axwspk2pkmor/zaid.elmouaddibe-etu@etu.univh2c.ma' --password-stdin mad.ocir.io
+      echo 'KUIsY:ijFB_61R_59xkL' | docker login -u 'axwspk2pkmor/zaid.elmouaddibe-etu@etu.univh2c.ma' --password-stdin mad.ocir.io
       docker tag myapp:latest mad.ocir.io/axwspk2pkmor/repo:latest
       docker push mad.ocir.io/axwspk2pkmor/repo:latest
