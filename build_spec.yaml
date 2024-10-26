@@ -6,9 +6,15 @@ steps:
     name: Build Docker Image
     command: |
       docker build -t myapp:latest .
+
   - type: Command
     name: Push Docker Image to OCR
     command: |
       echo 'KUIsY:ijFB_61R_59xkL' | docker login -u 'axwspk2pkmor/zaid.elmouaddibe-etu@etu.univh2c.ma' --password-stdin mad.ocir.io
       docker tag myapp:latest mad.ocir.io/axwspk2pkmor/repo:latest
       docker push mad.ocir.io/axwspk2pkmor/repo:latest
+
+outputArtifacts:
+  - name: docker-web-images
+    type: DOCKER_IMAGE
+    location: mad.ocir.io/axwspk2pkmor/repo:latest
