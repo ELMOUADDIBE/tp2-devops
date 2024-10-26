@@ -15,6 +15,6 @@ steps:
       docker push mad.ocir.io/axwspk2pkmor/repo:latest
 
 outputArtifacts:
-  - name: docker-web-images
+  - name: docker-web-image
     type: DOCKER_IMAGE
     location: mad.ocir.io/axwspk2pkmor/repo:latest
